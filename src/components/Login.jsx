@@ -1,14 +1,37 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Header from './Header';
+import { checkValidData } from '../utils/validate';
 
 function Login() {
     const [isSignIn, setIsSignIn] = useState(true);
-    const handleToggle = () => setIsSignIn(!isSignIn);
+    const [errorMessage, setErrorMessage] = useState(null);
+    const name = useRef(null);
+    const email = useRef(null);
+    const password = useRef(null);
+    const confirmPassword = useRef(null);
 
-    // Utility class variables
+    const handleToggle = () =>{setIsSignIn(!isSignIn);
+        setErrorMessage(null);
+    }
+    const handleClick = () => {
+        const Message = checkValidData(
+            name?.current?.value,
+            email?.current?.value,
+            password?.current?.value,
+            confirmPassword?.current?.value,
+            isSignIn
+        );
+
+        if (Message !== true) {
+            setErrorMessage(Message);
+            return;
+        }
+
+        setErrorMessage(null);
+    };
+
     const inputField = "w-full p-2 sm:p-3 bg-gray-900 rounded focus:outline-none focus:ring-2 focus:ring-white";
     const btnRed = "w-full py-2 sm:py-3 bg-red-600 hover:bg-red-700 rounded font-semibold";
-    const btnGray = "w-full py-2 sm:py-3 bg-gray-600 hover:bg-gray-700 rounded font-semibold";
 
     return (
         <div className="relative h-screen w-screen bg-black">
@@ -21,35 +44,25 @@ function Login() {
                 />
             </div>
 
-            <form className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 sm:w-full max-w-md p-6 sm:p-8 bg-black bg-opacity-80 rounded-md shadow-lg text-white space-y-4">
+            <form onSubmit={(e) => { e.preventDefault() }} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 sm:w-full max-w-md p-6 sm:p-8 bg-black opacity-90 rounded-md shadow-lg text-white space-y-4">
                 <h1 className="text-2xl sm:text-3xl font-bold">{isSignIn ? "Sign In" : "Sign Up"}</h1>
 
-                {!isSignIn && (
-                    <>
-                        <input type="text" placeholder="Enter your name" className={inputField} />
-                        <input type="email" placeholder="Email" className={inputField} />
-                        <input type="text" placeholder="Mobile Number" className={inputField} />
-                    </>
+                <>
+                    {!isSignIn && <input ref={name} type="text" placeholder="Enter your name" className={inputField} />}
+                    <input ref={email} type="email" placeholder="Email" className={inputField} />
+                    <input ref={password} type="password" placeholder="Password" className={inputField} />
+                    {!isSignIn && (
+                        <input ref={confirmPassword} type="password" placeholder="Confirm Password" className={inputField} />
+                    )}
+                </>
+
+                {errorMessage && (
+                    <p className="text-red-500 text-center text-sm">{errorMessage}</p>
                 )}
 
-                {isSignIn && (
-                    <input type="text" placeholder="Email or Mobile Number" className={inputField} />
-                )}
-
-                <input type="password" placeholder="Password" className={inputField} />
-
-                {!isSignIn && (
-                    <input type="password" placeholder="Confirm Password" className={inputField} />
-                )}
-
-                <button className={btnRed}>{isSignIn ? "Sign In" : "Sign Up"}</button>
-
-                {isSignIn && (
-                    <>
-                        <div className="text-center text-gray-400">OR</div>
-                        <button className={btnGray}>Use a sign-in code</button>
-                    </>
-                )}
+                <button type="button" className={btnRed} onClick={handleClick}>
+                    {isSignIn ? "Sign In" : "Sign Up"}
+                </button>
 
                 <p className="text-xs sm:text-sm text-gray-400 text-center">
                     {isSignIn ? "New to NetflixGPT? " : "Already have an account? "}
