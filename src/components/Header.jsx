@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { auth } from "../utils/firebase";
 import { logout } from "../store/userSlice";
 import { useNavigate } from "react-router-dom";
+import { LOGO } from "../utils/constants";
 
 function Header() {
     const user = useSelector((state) => state.user);
@@ -19,7 +20,7 @@ function Header() {
         <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-black px-6 py-4 flex justify-between items-center z-10">
             {/* Netflix Logo */}
             <img
-                src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+                src= {LOGO}
                 alt="Netflix Logo"
                 className="w-32 cursor-pointer"
                 onClick={() => navigate("/browse")}

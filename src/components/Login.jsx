@@ -3,6 +3,7 @@ import Header from './Header';
 import { checkValidData } from '../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { AVATAR_PHOTO } from '../utils/constants';
 
 function Login() {
     const [isSignIn, setIsSignIn] = useState(true);
@@ -42,7 +43,7 @@ function Login() {
                 // **Sign-Up (New User)**
                 const userCredential = await createUserWithEmailAndPassword(auth, email.current.value, password.current.value);
                 updateProfile(auth.currentUser, {
-                    displayName: name?.current?.value, photoURL: "https://assets.leetcode.com/users/abhishekgade790/avatar_1728492588.png"
+                    displayName: name?.current?.value, photoURL: AVATAR_PHOTO
                 }).then(() => {
 
                 }).catch((error) => {
