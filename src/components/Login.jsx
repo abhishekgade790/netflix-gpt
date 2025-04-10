@@ -41,7 +41,7 @@ function Login() {
         try {
             if (!isSignIn) {
                 // **Sign-Up (New User)**
-                const userCredential = await createUserWithEmailAndPassword(auth, email.current.value, password.current.value);
+                await createUserWithEmailAndPassword(auth, email.current.value, password.current.value);
                 updateProfile(auth.currentUser, {
                     displayName: name?.current?.value, photoURL: AVATAR_PHOTO
                 }).then(() => {
@@ -49,14 +49,11 @@ function Login() {
                 }).catch((error) => {
                     setErrorMessage("Error updating profile: " + error.message)
                 });
-                console.log(userCredential);
             } else {
                 // **Sign-In (Existing User)**
-                const userCredential = await signInWithEmailAndPassword(auth, email.current.value, password.current.value);
-                console.log(userCredential);
+                 await signInWithEmailAndPassword(auth, email.current.value, password.current.value);
             }
         } catch (error) {
-            console.error("Firebase Error:", error.code, error.message);
 
             // **User-Friendly Error Messages**
             const errorMessages = {
