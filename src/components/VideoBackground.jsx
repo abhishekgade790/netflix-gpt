@@ -8,9 +8,9 @@ const VideoBackground = ({ movieId }) => {
   const trailerKey = trailorVideo?.key;
 
   return (
-    <div className="relative z-0">
+    <div className=" z-0">
       {trailerKey && (
-        <div className="fixed inset-0 z-0 overflow-hidden animate-fadeIn">
+        <div className=" inset-0 z-0 overflow-hidden animate-fadeIn">
           <iframe
             className="absolute w-screen aspect-video scale-[1.5] pointer-events-none transition-transform duration-1000 ease-out"
             src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailerKey}&modestbranding=1&showinfo=0`}
