@@ -79,7 +79,7 @@ function Login() {
             <Header />
             <div className="absolute inset-0">
                 <img
-                    src="https://assets.nflxext.com/ffe/siteui/vlv3/fbf440b2-24a0-49f5-b2ba-a5cbe8ea8736/web/IN-en-20250324-TRIFECTA-perspective_d7c906ec-0531-47de-8ece-470d5061c88a_small.jpg"
+                    src="https://api.deepai.org/job-view-file/dd01177f-817e-4d4e-b99a-03de2ff44395/outputs/output.jpg"
                     alt="bg Image"
                     className="w-full h-full object-cover brightness-50"
                 />
@@ -110,7 +110,7 @@ function Login() {
 
                 {/* ✅ Toggle Sign In / Sign Up */}
                 <p className="text-xs sm:text-sm text-gray-400 text-center">
-                    {isSignIn ? "New to NetflixGPT? " : "Already have an account? "}
+                    {isSignIn ? "New to CineNestGPT? " : "Already have an account? "}
                     <span className="text-white hover:underline cursor-pointer" onClick={handleToggle}>
                         {isSignIn ? "Sign up now" : "Sign In"}
                     </span>

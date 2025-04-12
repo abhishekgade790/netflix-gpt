@@ -17,12 +17,12 @@ function Header() {
     };
 
     return (
-        <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-black px-6 py-4 flex justify-between items-center z-10">
-            {/* Netflix Logo */}
+        <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-black px-6 py-1 flex justify-between items-center z-10">
+            {/* CineNest Logo */}
             <img
                 src= {LOGO}
-                alt="Netflix Logo"
-                className="w-32 cursor-pointer"
+                alt="CineNest Logo"
+                className="w-60 cursor-pointer"
                 onClick={() => navigate("/browse")}
             />
 
@@ -42,7 +42,7 @@ function Header() {
 
                     <button
                         onClick={handleLogout}
-                        className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-md"
+                        className="bg-red-700 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-md"
                     >
                         Logout
                     </button>

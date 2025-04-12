@@ -2,14 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBfZdwH6EEh8jj047HPGJLHHy8q-saxedo",
-    authDomain: "netflix-gpt1-231b7.firebaseapp.com",
-    projectId: "netflix-gpt1-231b7",
-    storageBucket: "netflix-gpt1-231b7.firebasestorage.app",
-    messagingSenderId: "701175896666",
-    appId: "1:701175896666:web:053b7e6a90f69e755bd663",
-    measurementId: "G-BMBXVDW48D"
-  };
+  apiKey: "AIzaSyAXUlX0uqCAJqQRlmmwpKn3MdnNW1i2fcU",
+  authDomain: "cinenestgpt.firebaseapp.com",
+  projectId: "cinenestgpt",
+  storageBucket: "cinenestgpt.firebasestorage.app",
+  messagingSenderId: "843389552140",
+  appId: "1:843389552140:web:80504a2fbdc69392619029",
+  measurementId: "G-KZFN5WMLWS"
+};
 
 
 const app = initializeApp(firebaseConfig);
