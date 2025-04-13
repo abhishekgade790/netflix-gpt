@@ -1,13 +1,14 @@
 import React from 'react'
 import GptSearchBar from './GptSearchBar'
 import GptMoviesSuggestion from './GptMoviesSuggestion'
+import { BACKGROUND_IMG_URL } from '../utils/constants'
 
 const GptSearch = () => {
     return (
         <div className='flex flex-col'>
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 -z-10">
                 <img
-                    src="https://api.deepai.org/job-view-file/dd01177f-817e-4d4e-b99a-03de2ff44395/outputs/output.jpg"
+                    src={BACKGROUND_IMG_URL}
                     alt="bg Image"
                     className="w-full h-full object-cover brightness-50"
                 />

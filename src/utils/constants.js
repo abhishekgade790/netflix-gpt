@@ -1,4 +1,4 @@
-export const LOGO = "https://github.com/abhishekgade790/netflix-gpt/blob/main/cinenestLOGO.png?raw=true"
+export const LOGO = "https://github.com/abhishekgade790/netflix-gpt/blob/main/src/assets/cinenestLOGO.png?raw=true"
 
 export const AVATAR_PHOTO = "https://assets.leetcode.com/users/abhishekgade790/avatar_1728492588.png"
 
@@ -12,13 +12,7 @@ export const API_OPTIONS = {
 
 export const IMG_CDN_URL = 'https://image.tmdb.org/t/p/w500'
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAXUlX0uqCAJqQRlmmwpKn3MdnNW1i2fcU",
-//   authDomain: "cinenestgpt.firebaseapp.com",
-//   projectId: "cinenestgpt",
-//   storageBucket: "cinenestgpt.firebasestorage.app",
-//   messagingSenderId: "843389552140",
-//   appId: "1:843389552140:web:80504a2fbdc69392619029",
-//   measurementId: "G-KZFN5WMLWS"
-// };
+export const BACKGROUND_IMG_URL ="https://github.com/abhishekgade790/netflix-gpt/blob/main/src/assets/background.jpg?raw=true"
+
+
 

@@ -3,7 +3,7 @@ import Header from './Header';
 import { checkValidData } from '../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { AVATAR_PHOTO } from '../utils/constants';
+import { AVATAR_PHOTO, BACKGROUND_IMG_URL } from '../utils/constants';
 
 function Login() {
     const [isSignIn, setIsSignIn] = useState(true);
@@ -79,7 +79,7 @@ function Login() {
             <Header />
             <div className="absolute inset-0">
                 <img
-                    src="https://api.deepai.org/job-view-file/dd01177f-817e-4d4e-b99a-03de2ff44395/outputs/output.jpg"
+                    src={BACKGROUND_IMG_URL}
                     alt="bg Image"
                     className="w-full h-full object-cover brightness-50"
                 />
