@@ -4,6 +4,7 @@ import { auth } from "../utils/firebase";
 import { logout } from "../store/userSlice";
 import { useNavigate } from "react-router-dom";
 import { LOGO } from "../utils/constants";
+import { toggleGptSearch } from "../store/gptSlice";
 
 function Header() {
     const user = useSelector((state) => state.user);
@@ -14,6 +15,13 @@ function Header() {
         auth.signOut();
         dispatch(logout());
         navigate("/");
+    };
+
+    const showGptSearch = useSelector((state => state.gpt.showGptSearch));
+
+
+    const handleSearchClick = () => {
+        dispatch(toggleGptSearch())
     };
 
     return (
@@ -28,21 +36,18 @@ function Header() {
 
             <div className="flex justify-between items-center gap-4">
                 {user && (
-                    <div className="flex">
-                        <img
-                            src={user.photoURL}
-                            alt={user.displayName}
-                            className="w-10 h-10 rounded-full cursor-pointer"
-                            onClick={() => navigate("/browse")}
-                        />
-
-                    </div>
+                    <button
+                    onClick={handleSearchClick}
+                    className="bg-white hover:bg-gray-300 text-gray-900 font-semibold px-4 py-2 rounded-md"
+                >
+                    {showGptSearch?"Back to Movie":"Search"}
+                </button>
                 )}
                 {user && (
 
                     <button
                         onClick={handleLogout}
-                        className="bg-red-700 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-md"
+                        className="bg-red-700 hover:bg-red-800 text-white font-semibold px-4 py-2 rounded-md"
                     >
                         Logout
                     </button>

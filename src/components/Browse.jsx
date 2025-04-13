@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux";
 import useFetchMovies from "../hooks/useFetchMovies";
 import { setNowPlayingMovies, setPopularMovies, setTopRatedMovies, setUpcomingMovies } from "../store/moviesSlice";
+import GptSearch from "./GptSearch";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 
@@ -24,10 +26,14 @@ const Browse = () => {
     setUpcomingMovies
   )
 
+  const showGptSearch = useSelector((state => state.gpt.showGptSearch));
+
   return (
     <div className="flex flex-col w-full min-h-screen overflow-x-hidden">
-      <MainContainer />
-      <SecondaryContainer />
+      {
+        showGptSearch ? <GptSearch /> : <> <MainContainer />
+          <SecondaryContainer /></>
+      }
     </div>
   );
 };
