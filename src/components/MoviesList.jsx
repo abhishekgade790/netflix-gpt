@@ -4,7 +4,7 @@ import MovieCard from './MovieCard'
 const MoviesList = ({ title, movies }) => {
     return (
         <div className="px-4 py-2 ">
-            <h1 className="text-white text-xl font-semibold mb-2 ml-2">{title}</h1>
+            <h1 className="text-white md:text-xl font-semibold md:mb-2 ml-2">{title}</h1>
 
             <div
                 className="
@@ -15,12 +15,13 @@ const MoviesList = ({ title, movies }) => {
           scroll-smooth 
         no-scrollbar"
             >
-                {movies && movies.map((movie) => (
-                    <div
+                {movies &&  movies.map((movie) => (
+                    movie.poster_path && <div
                         key={movie.id}
-                        className="snap-start shrink-0 w-[120px] sm:w-[150px] md:w-[170px] aspect-[2/3]"
+                        className="snap-start shrink-0 w-[110px] md:w-[170px] aspect-[2/3]"
                     >
-                        <MovieCard poster_path={movie.poster_path} />
+                    
+                    <MovieCard poster_path={movie.poster_path} />
                     </div>
 
                 ))}

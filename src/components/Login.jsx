@@ -72,7 +72,7 @@ function Login() {
 
     // ✅ Tailwind CSS Styles
     const inputField = "w-full p-2 sm:p-3 bg-gray-900 rounded focus:outline-none focus:ring-2 focus:ring-white";
-    const btnRed = "w-full py-2 sm:py-3 bg-red-600 hover:bg-red-700 rounded font-semibold";
+    const btnRed = "w-full py-2 sm:py-3 bg-red-800 hover:bg-red-900 rounded font-semibold cursor-pointer ";
 
     return (
         <div className="relative h-screen w-screen bg-black">
@@ -85,7 +85,7 @@ function Login() {
                 />
             </div>
 
-            <form onSubmit={(e) => { e.preventDefault(); }} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 sm:w-full max-w-md p-6 sm:p-8 bg-black opacity-90 rounded-md shadow-lg text-white space-y-4">
+            <form onSubmit={(e) => { e.preventDefault(); }} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 sm:w-full max-w-md p-6 sm:p-8 bg-black/80 rounded-md shadow-lg text-white space-y-4">
                 <h1 className="text-2xl sm:text-3xl font-bold">{isSignIn ? "Sign In" : "Sign Up"}</h1>
 
                 {/* ✅ Input Fields */}
