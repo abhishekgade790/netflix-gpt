@@ -9,6 +9,7 @@ import Browse from './components/Browse';
 import { Provider } from 'react-redux';
 import appStore from './store/appStore';
 import AppLayout from './components/AppLayout';
+import MyList from './components/MyList';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/browse",
         element: <Browse />
+      },
+      {
+        path: "/mylist",
+        element: <MyList />
       }
     ]
   }

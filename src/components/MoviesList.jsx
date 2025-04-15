@@ -15,13 +15,12 @@ const MoviesList = ({ title, movies }) => {
           scroll-smooth 
         no-scrollbar"
             >
-                {movies &&  movies.map((movie) => (
+                {movies && movies.map((movie) => (
                     movie.poster_path && <div
                         key={movie.id}
                         className="snap-start shrink-0 w-[110px] md:w-[170px] aspect-[2/3]"
                     >
-                    
-                    <MovieCard poster_path={movie.poster_path} />
+                        <MovieCard movie={movie} />
                     </div>
 
                 ))}

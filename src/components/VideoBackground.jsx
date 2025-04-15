@@ -15,7 +15,6 @@ const VideoBackground = ({ movieId }) => {
             className="absolute w-screen aspect-video scale-[1.5] pointer-events-none transition-transform duration-1000 ease-out"
             src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailerKey}&modestbranding=1&showinfo=0`}
             title="Movie Trailer"
-            frameBorder="0"
             allow="autoplay; encrypted-media"
             allowFullScreen
           ></iframe>

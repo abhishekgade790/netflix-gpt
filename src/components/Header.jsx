@@ -4,7 +4,7 @@ import { auth } from "../utils/firebase";
 import { logout } from "../store/userSlice";
 import { useNavigate } from "react-router-dom";
 import { LOGO } from "../utils/constants";
-import { resetGptState, toggleGptSearch } from "../store/gptSlice";
+import { resetGptState, resetToggle, toggleGptSearch } from "../store/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/langConstants";
 import { changeLanguage } from "../store/configSlice";
 
@@ -17,24 +17,25 @@ function Header() {
         auth.signOut();
         dispatch(logout());
         dispatch(resetGptState());
-        dispatch(resetGptState())
+        // Removed duplicate resetGptState dispatch
 
         navigate("/");
     };
 
-    const showGptSearch = useSelector((state => state.gpt.showGptSearch));
+    const showGptSearch = useSelector((state) => state.gpt.showGptSearch);
 
-
+    // Updated function to navigate to /browse
     const handleSearchClick = () => {
-        dispatch(toggleGptSearch())
+        navigate("/browse");
+        dispatch(toggleGptSearch());
     };
 
-    const handleLanguageChange = (e)=>{
-        dispatch(changeLanguage(e.target.value))
-    }
+    const handleLanguageChange = (e) => {
+        dispatch(changeLanguage(e.target.value));
+    };
 
     return (
-        <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-black  md:px-6 py-1 flex  flex-row  justify-between items-center z-10">
+        <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-black md:px-6 py-1 flex flex-col md:flex-row justify-between items-center z-10">
             {/* CineNest Logo */}
             <img
                 src={LOGO}
@@ -44,23 +45,45 @@ function Header() {
             />
 
             {user && (
-                <div className="flex justify-between items-center gap-2 md:gap-4 -mt-2">
-                    {showGptSearch&&<select
-                        className="text-white md:bg-gray-800 px-2 md:px-4 py-1 md:py-2 hover:border-b-2 md:hover:border-b-0 md:hover:bg-gray-900 cursor-pointer md:rounded-lg"
-                        onChange={handleLanguageChange}
+                <div className="flex justify-between items-center  md:gap-4 -mt-2">
+                    <button
+                        onClick={() => {
+                            navigate("/browse")
+                            dispatch(resetToggle());
+                        }}
+                        className="hover:border-b-2 text-white font-semibold px-4 py-2 transition cursor-pointer"
                     >
-                        {SUPPORTED_LANGUAGES.map((lang) => (
-                            <option  key={lang.identifier} value={lang.identifier}>
-                                {lang.name}
-                            </option>
-                        ))}
-                    </select>}
+                        Home
+                    </button>
+                    {showGptSearch && (
+                        <select
+                            className="bg-transparent text-white px-2 md:px-4 py-1 md:py-2 hover:border-b-2 cursor-pointer"
+                            onChange={handleLanguageChange}
+                        >
+                            {SUPPORTED_LANGUAGES.map((lang) => (
+                                <option
+                                    className="text-black"
+                                    key={lang.identifier}
+                                    value={lang.identifier}
+                                >
+                                    {lang.name}
+                                </option>
+                            ))}
+                        </select>
+                    )}
 
                     <button
                         onClick={handleSearchClick}
-                        className="md:bg-white hover:border-b-2 md:hover:border-b-0 md:hover:bg-gray-300 text-white md:text-gray-900 font-semibold px-4 py-2 md:rounded-md transition cursor-pointer"
+                        className="hover:border-b-2 text-white font-semibold px-4 py-2 transition cursor-pointer"
                     >
-                        {showGptSearch ? "Back to Movie" : "GPT Search"}
+                        {!showGptSearch ? "GPT Search" : "Browse Movies"}
+                    </button>
+
+                    <button
+                    onClick={()=>{navigate("/mylist")}}
+                        className="hover:border-b-2 text-white font-semibold px-4 py-2 transition cursor-pointer"
+                    >
+                        My List
                     </button>
 
                     <button
@@ -71,7 +94,6 @@ function Header() {
                     </button>
                 </div>
             )}
-
         </div>
     );
 }
