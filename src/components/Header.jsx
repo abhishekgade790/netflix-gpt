@@ -45,7 +45,7 @@ function Header() {
             />
 
             {user && (
-                <div className="flex justify-between items-center  md:gap-4 -mt-2">
+                <div className="flex justify-between items-center text-sm md:text-lg md:gap-4 -mt-2">
                     <button
                         onClick={() => {
                             navigate("/browse")

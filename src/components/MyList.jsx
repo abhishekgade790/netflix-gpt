@@ -54,8 +54,11 @@ const MyList = () => {
             return (
               <div
                 key={id}
-                className="relative overflow-hidden shadow-md border border-gray-700 cursor-pointer group"
-                onClick={() => toggleOverlay(id)}
+                className="relative overflow-hidden shadow-md border border-gray-700 group cursor-pointer"
+                onClick={() => {
+                  // Only toggle on small screens
+                  if (window.innerWidth < 768) toggleOverlay(id);
+                }}
                 onDoubleClick={() => setActiveOverlayId(null)}
               >
                 <img
@@ -64,9 +67,36 @@ const MyList = () => {
                   className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                 />
 
+                {/* Overlay for Desktop (hover) */}
+                <div
+                  className="absolute inset-0 bg-black/80 text-white flex-col justify-between p-3 z-10 hidden md:flex opacity-0 group-hover:opacity-100 transition duration-300"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex justify-between">
+                    <button className="bg-white text-black p-2 rounded-full hover:bg-gray-300 transition">
+                      <FaPlay />
+                    </button>
+                    <button className="bg-white text-black p-2 rounded-full hover:bg-gray-300 transition">
+                      <FaInfoCircle />
+                    </button>
+                    <button
+                      onClick={() => handleRemove(id, title)}
+                      className="bg-red-600 text-white p-2 rounded-full hover:bg-red-500 transition"
+                    >
+                      <FaTrash />
+                    </button>
+                  </div>
+                  <div className="mt-2">
+                    <h3 className="font-bold text-lg">{title}</h3>
+                    {release_date && <p className="text-sm">Released: {release_date}</p>}
+                    <p className="text-sm">Rating: {vote_average.toFixed(1)}</p>
+                  </div>
+                </div>
+
+                {/* Overlay for Mobile (tap toggle) */}
                 {activeOverlayId === id && (
                   <div
-                    className="absolute inset-0 bg-black/80 text-white flex flex-col justify-between p-3 z-10 transition-opacity duration-300 ease-in-out"
+                    className="absolute inset-0 bg-black/80 text-white flex flex-col justify-between p-3 z-10 md:hidden"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="flex justify-between">

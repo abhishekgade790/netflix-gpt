@@ -2,13 +2,27 @@ import React from 'react';
 import { FaPlay, FaPlus, FaInfoCircle } from 'react-icons/fa';
 import { addToList } from '../store/myListSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const VideoTitle = ({ mainMovie }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { title, overview, id } = mainMovie;
 
   const myList = useSelector((state) => state.myList);
   const alreadyAdded = myList.some((item) => item.id === id);
+
+
+  const handlePlayClick = (e) => {
+    e.stopPropagation();
+    navigate(`/movie/${id}?action=play`);
+  };
+
+  const handleInfoClick = (e) => {
+    e.stopPropagation();
+    navigate(`/movie/${id}?action=info`);
+  };
 
   const handleMyListClick = () => {
     if (alreadyAdded) {
@@ -29,7 +43,7 @@ const VideoTitle = ({ mainMovie }) => {
       <div className="flex w-screen flex-wrap gap-2 md:gap-4 -mt-2 -md:mt-8">
         <button
           className="bg-white text-black font-semibold text-sm md:text-lg px-3 md:px-4 py-1 sm:py-2.5 rounded hover:bg-gray-300 transition flex items-center gap-2"
-          onClick={() => { console.log("paly clicked") }}
+          onClick={handlePlayClick}
         >
           <FaPlay />
           Play
@@ -43,7 +57,9 @@ const VideoTitle = ({ mainMovie }) => {
           My List
         </button>
 
-        <button className="bg-gray-700/70 text-white font-semibold text-sm md:text-lg px-3 md:px-4 py-1 sm:py-2.5 rounded hover:bg-gray-600 transition flex items-center gap-2">
+        <button className="bg-gray-700/70 text-white font-semibold text-sm md:text-lg px-3 md:px-4 py-1 sm:py-2.5 rounded hover:bg-gray-600 transition flex items-center gap-2"
+          onClick={handleInfoClick}
+        >
           <FaInfoCircle />
           More Info
         </button>

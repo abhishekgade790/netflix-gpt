@@ -10,6 +10,8 @@ import { Provider } from 'react-redux';
 import appStore from './store/appStore';
 import AppLayout from './components/AppLayout';
 import MyList from './components/MyList';
+import MovieDetail from './components/MovieDetail';
+
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/mylist",
         element: <MyList />
+      },
+      {
+        path: "/movie/:id", // <-- New route for detail page
+        element: <MovieDetail />
       }
     ]
   }
