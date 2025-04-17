@@ -11,6 +11,7 @@ import appStore from './store/appStore';
 import AppLayout from './components/AppLayout';
 import MyList from './components/MyList';
 import MovieDetail from './components/MovieDetail';
+import Profile from './components/Profile';
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/movie/:id", // <-- New route for detail page
         element: <MovieDetail />
+      },
+      {
+        path:"/u/:displayName",
+        element: <Profile/>
       }
     ]
   }

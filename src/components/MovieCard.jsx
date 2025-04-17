@@ -62,7 +62,7 @@ const MovieCard = ({ movie, activeOverlayId, setActiveOverlayId }) => {
     >
       <Toaster position="bottom-center" />
       {isLoading && (
-        <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-60 z-10">
+        <div className="absolute inset-0 flex justify-center items-center bg-black/60 z-10">
           <ClipLoader color="#f87171" size={40} />
         </div>
       )}

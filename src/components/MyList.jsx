@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FaPlay, FaInfoCircle, FaTrash } from 'react-icons/fa';
 import { removeAll, removeFromList } from '../store/myListSlice';
 import toast, { Toaster } from 'react-hot-toast';
+import { BACKGROUND_IMG_URL } from '../utils/constants';
 
 const MyList = () => {
   const myList = useSelector((state) => state.myList);
@@ -27,7 +28,14 @@ const MyList = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white px-8 py-8 pt-28 relative">
+    <div className="min-h-screen text-white px-8 py-8 pt-28 relative">
+      <div className="fixed inset-0 -z-10">
+        <img
+          src={BACKGROUND_IMG_URL}
+          alt="bg Image"
+          className="w-full h-full object-cover brightness-30"
+        />
+      </div>
       <Toaster position="bottom center" reverseOrder={false} />
 
       <div className="flex justify-between items-center mb-6">

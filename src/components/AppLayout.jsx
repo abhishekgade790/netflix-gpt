@@ -5,6 +5,7 @@ import { useLocation, useNavigate, Outlet } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { login, logout } from "../store/userSlice";
 import Header from "./Header";
+import { Toaster } from "react-hot-toast";
 
 const AppLayout = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const AppLayout = () => {
     <div>
       <Header />
       <Outlet />
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };

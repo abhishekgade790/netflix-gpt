@@ -17,7 +17,7 @@ export const SUPPORTED_LANGUAGES = [
 export const lang = {
     en: {
         search: "Search",
-        placeholder: "What would you like to watch today?"
+        placeholder: "Search to Watch "
     },
     hindi: {
         search: "खोजें",

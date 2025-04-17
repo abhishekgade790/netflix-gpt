@@ -6,6 +6,7 @@ import useFetchMovieDetail from '../hooks/useFetchMovieDetail';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPlay, FaInfoCircle } from 'react-icons/fa';
+import { BACKGROUND_IMG_URL } from '../utils/constants';
 
 // Lazy components
 const MovieInfo = lazy(() => import('./MovieInfo'));
@@ -29,7 +30,14 @@ const MovieDetail = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+    <div className="relative min-h-screen text-white overflow-hidden">
+      <div className="fixed inset-0 -z-10">
+              <img
+                src={BACKGROUND_IMG_URL}
+                alt="bg Image"
+                className="w-full h-full object-cover brightness-10"
+              />
+            </div>
       {/* Toggle Buttons */}
       <div className="absolute z-50 top-[13vh] flex items-center justify-center gap-3 w-screen">
         <button

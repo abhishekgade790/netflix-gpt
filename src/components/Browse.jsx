@@ -4,6 +4,7 @@ import { setNowPlayingMovies, setPopularMovies, setTopRatedMovies, setUpcomingMo
 import GptSearch from "./GptSearch";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import { BACKGROUND_IMG_URL } from "../utils/constants";
 
 const Browse = () => {
   useFetchMovies(
@@ -30,6 +31,13 @@ const Browse = () => {
 
   return (
     <div className="flex flex-col w-full min-h-screen overflow-x-hidden">
+      <div className="fixed inset-0 -z-10">
+              <img
+                src={BACKGROUND_IMG_URL}
+                alt="bg Image"
+                className="w-full h-full object-cover brightness-50"
+              />
+            </div>
       {
         showGptSearch ? <GptSearch /> : <> <MainContainer />
           <SecondaryContainer /></>

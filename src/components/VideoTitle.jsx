@@ -36,7 +36,7 @@ const VideoTitle = ({ mainMovie }) => {
       <h1 className="text-[clamp(1.5rem,5vw,3rem)] font-extrabold drop-shadow-md mb-4 leading-tight">
         {title}
       </h1>
-      <p className="w-full h-20 overflow-y-scroll no-scrollbar md:h-auto text-[clamp(0.6rem,2vw,1rem)] md:text-[clamp(0.8rem,2vw,1.1rem)] mb-6 drop-shadow-md leading-relaxed">
+      <p className="w-full hidden md:block no-scrollbar md:h-auto text-[clamp(0.6rem,2vw,1rem)] md:text-[clamp(0.8rem,2vw,1.1rem)] mb-6 drop-shadow-md leading-relaxed">
         {overview}
       </p>
 

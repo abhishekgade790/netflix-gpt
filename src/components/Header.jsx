@@ -1,28 +1,19 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { auth } from "../utils/firebase";
-import { logout } from "../store/userSlice";
 import { useNavigate } from "react-router-dom";
 import { LOGO } from "../utils/constants";
-import { resetGptState, resetToggle, toggleGptSearch } from "../store/gptSlice";
+import { resetToggle, toggleGptSearch } from "../store/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/langConstants";
 import { changeLanguage } from "../store/configSlice";
+import { FaUserCircle } from 'react-icons/fa';
+
 
 function Header() {
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const handleLogout = () => {
-        auth.signOut();
-        dispatch(logout());
-        dispatch(resetGptState());
-        // Removed duplicate resetGptState dispatch
-
-        navigate("/");
-    };
-
     const showGptSearch = useSelector((state) => state.gpt.showGptSearch);
+
 
     // Updated function to navigate to /browse
     const handleSearchClick = () => {
@@ -40,7 +31,7 @@ function Header() {
             <img
                 src={LOGO}
                 alt="CineNest Logo"
-                className="w-45 md:w-60 cursor-pointer"
+                className="w-36 md:w-60 cursor-pointer"
                 onClick={() => navigate("/browse")}
             />
 
@@ -80,18 +71,23 @@ function Header() {
                     </button>
 
                     <button
-                    onClick={()=>{navigate("/mylist")}}
+                        onClick={() => { navigate("/mylist") }}
                         className="hover:border-b-2 text-white font-semibold px-4 py-2 transition cursor-pointer"
                     >
                         My List
                     </button>
 
-                    <button
-                        onClick={handleLogout}
-                        className="md:bg-red-700 hover:border-b-2 md:hover:border-b-0 md:hover:bg-red-800 text-white font-semibold px-4 py-2 md:rounded-md transition cursor-pointer"
-                    >
-                        Logout
-                    </button>
+                    <div>
+                        <FaUserCircle
+                            className="hover:scale-110 text-white text-2xl md:text-3xl ml-4 cursor-pointer"
+                            onClick={() => {
+                                navigate(`/u/${user.uid}`)
+                            }}
+                        />
+
+
+                    </div>
+
                 </div>
             )}
         </div>

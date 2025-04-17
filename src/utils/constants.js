@@ -2,7 +2,7 @@ export const LOGO =
   "https://github.com/abhishekgade790/netflix-gpt/blob/main/src/assets/cinenestLOGO.png?raw=true";
 
 export const AVATAR_PHOTO =
-  "https://assets.leetcode.com/users/abhishekgade790/avatar_1728492588.png";
+  "";
 
 export const API_OPTIONS = {
   method: "GET",

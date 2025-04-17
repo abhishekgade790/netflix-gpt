@@ -11,7 +11,7 @@ const GptSearchBar = () => {
     const dispatch = useDispatch();
 
     const langKey = useSelector((store) => store.config.lang)
-    const [input, setInput] = useState("")
+    const [input, setInput] = useState("suggest your self in hindi and always random")
 
     const searchMovieTMDB = async (movie) => {
         const response = await fetch('https://api.themoviedb.org/3/search/movie?query=' + movie + '&include_adult=false&language="hi"&page=1', API_OPTIONS)
@@ -42,12 +42,12 @@ const GptSearchBar = () => {
 
 
     return (
-        <div className="flex flex-col justify-center items-center mt-[25%] md:mt-[10%]">
+        <div className="flex flex-col justify-center items-center mt-[30%] md:mt-[10%]">
             <form
                 onSubmit={(e) => {
                     e.preventDefault()
                 }}
-                className="flex w-[90%] md:w-full md:max-w-xl border-1 border-white rounded-md">
+                className="flex w-[80%] md:w-full md:max-w-xl rounded-md">
                 <input
                     type="text"
                     className="flex-grow px-5 py-3 rounded-l-md bg-gray-800/90 text-white placeholder-gray-400 focus:outline-none"
