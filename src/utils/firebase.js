@@ -2,15 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAXUlX0uqCAJqQRlmmwpKn3MdnNW1i2fcU",
-  authDomain: "cinenestgpt.firebaseapp.com",
-  projectId: "cinenestgpt",
-  storageBucket: "cinenestgpt.firebasestorage.app",
-  messagingSenderId: "843389552140",
-  appId: "1:843389552140:web:80504a2fbdc69392619029",
-  measurementId: "G-KZFN5WMLWS"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
-
 
 const app = initializeApp(firebaseConfig);
 
